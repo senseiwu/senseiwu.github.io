@@ -4,6 +4,17 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+$(document).ready(function() {
+	function scrollToAnchor(aid){
+		var aTag = $("a[name='"+ aid +"']");
+		$('html,body').animate({scrollTop: aTag.offset().top},1000);
+	}
+	$("a").click(function() {
+		var href = $(this).attr('href').replace('#', '')
+		scrollToAnchor(href);
+	});
+});
+
 (function($) {
 
 	skel.breakpoints({

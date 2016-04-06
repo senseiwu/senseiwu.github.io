@@ -1810,7 +1810,8 @@
 		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		/*border-bottom: dotted 1px;*/
-		color: #e89980;
+		/*color: #e89980; FIX*/
+		color: #727272;
 		text-decoration: none;
 	}
 
@@ -2361,6 +2362,11 @@
 				color: #ffffff;
 			}
 
+			.icon.major.accentgreen {
+				background: #68efad;
+				color: #ffffff;
+			}
+
 /* Image */
 
 	.image {
@@ -2611,10 +2617,10 @@
 		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		background-color: #666;
+		background-color: #68efad;
 		border-radius: 6px;
 		border: 0;
-		color: #ffffff;
+		color: #212121;
 		cursor: pointer;
 		display: inline-block;
 		font-weight: 400;
@@ -2798,7 +2804,7 @@
 	}
 
 	#header {
-		background: #444;
+		background: #7a1ea1;
 		color: #bbb;
 		cursor: default;
 		height: 3.25em;
@@ -3029,7 +3035,7 @@
 
 	#banner {
 		background-attachment: scroll,							fixed;
-		background-color: #666;
+		background-color: #691a99;
 		/*background-image: url("images/overlay.png"), url("../../images/pic1.jpg");*/
 		background-position: top left,						center center;
 		background-repeat: repeat,							no-repeat;
@@ -3064,8 +3070,9 @@
 		#banner input[type="button"],
 		#banner .button {
 			background-color: transparent;
-			box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
-			color: #fff;
+			/*box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);*/
+			box-shadow: inset 0 0 0 2px #68efad;
+			color: #68efad;
 			min-width: 12em;
 		}
 
@@ -3087,7 +3094,7 @@
 			#banner input[type="reset"].special,
 			#banner input[type="button"].special,
 			#banner .button.special {
-				background: #fff;
+				background: #68efad;
 				color: #666 !important;
 			}
 
@@ -3172,7 +3179,7 @@
 	#cta {
 		/*background: #e89980;
 		color: #f9e5df;*/
-		background: #666;
+		background: #9b26af;
 		color: #fff;
 		padding: 3.5em 0 4em 0;
 		text-align: center;
@@ -3193,7 +3200,7 @@
 		#cta input[type="button"],
 		#cta .button {
 			box-shadow: none;
-			background: #fff;
+			background: #68efad;
 			/*color: #e89980;*/
 			color: #666;
 		}
@@ -3206,6 +3213,8 @@
 			color: #ffffff;
 			background: rgba(255, 255, 255, 0.15);
 			border: 0;
+			border:solid 1px #68efad;
+			/*box-shadow: 0 0 10px #719ECE;*/
 		}
 
 			#cta input[type="text"]:focus,
@@ -3213,7 +3222,8 @@
 			#cta input[type="email"]:focus,
 			#cta select:focus,
 			#cta textarea:focus {
-				box-shadow: inset 0 0 0 2px #fff;
+				/*box-shadow: inset 0 0 0 2px #68efad;*/
+				box-shadow: 0 0 10px #68efad;
 			}
 
 		#cta ::-webkit-input-placeholder {

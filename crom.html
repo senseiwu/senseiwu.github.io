@@ -25,10 +25,119 @@
 
 			<!-- Main -->
 				<section id="main" class="container">
+					<header>
+						<h2>
+							Android persistance<br />
+							Cursor Representation Object Mapping
+						</h2>
+						<p>
+							Crom is a simple library supports work with Cursors and ContentValues. Basicaly CROM transforms Cursor to POJO or POJO to ContentValue. Crom also includes CromLoader (oh yea, cool right? :) ) so you can obtain data automaticaly in backgroud.<br />
+							Look at github repo: <a href="github.com/rysiekblah/crom"><strong>github.com/rysiekblah/crom</strong></a>
+						</p>
+					</header>
 					<div class="row">
 						<div class="12u">
-							<!-- Text -->
-								Hello template
+							<section class="box">
+								<h3>Inspiration</h3>
+								<p>
+									I was working on mobile app, and one requirement said that app should keep data in cache.
+									Basically, this is nothing unusual, because creatign YATAPP (Yet Another Twitter App) also would need this feature.
+									BTW, YATAPP is very frequest choice for new Android devs :) <br/>
+									OK, let's take a look what Android affers in terms of Database.
+								</p>
+								<h4>Android DB</h4>
+								<p>
+									Android has data base by default - sqlite. This is simple relation DB.
+									<blockquote>
+										SQLite is an embedded SQL database engine. Unlike most other SQL databases, SQLite does not have a separate server process. SQLite reads and writes directly to ordinary disk files. A complete SQL database with multiple tables, indices, triggers, and views, is contained in a single disk file.
+									</blockquote>
+									If you are courius about sqlite, look here: <a href="www.sqlite.org/about.html">www.sqlite.org/about.html</a>
+								</p>
+								<h4>Access to DB on Android - 3 ways</h4>
+								<p>
+									<strong>SQLiteDatabase</strong> - Exposes methods to manage a SQLite database.<br />
+									<strong>ORMLite</strong> – very nice ORM lib works on Android, uses SQLiteDatabase<br />
+									<strong>ContentProvider</strong> – it is like adapter for SQLiteDatabase and CP can by public for many apps (on the same device:))<br />
+								</p>
+								<h4>ContentProvider</h4>
+								<p>
+									Content providers are one of the primary building blocks of Android applications, providing content to applications.<br />
+									But I don't really aggree that a content provider is only required if you need to share data between multiple applications.<br />
+									ContentProvider is perfect class in terms of DB access:</br>
+									<ul>
+										<li>It uses SQLiteDatabase, but it is safe.</li>
+										<li>Access from application context</li>
+										<li>It is separated part of your app, like adapter.</li>
+										<li>Can be public for other apps, eg. Contact list</li>
+										<li>It also returns Cursor</li>
+									</ul>
+								</p>
+								<p>
+									Okey, great! So we have everything. But how to deal with Cursor? Ha! Wgat is a Curson?!?!?<br />
+									If you have experience with JDBC, RowSet is equvalent for Android's Cursor.
+									Cursor is interface which provides random read-write access to the result set returned by a database query.
+									You can iterate over Cursor and take appropriate field of certain type like String, Integer etc.<br />
+									Simple? .. Well not really. Look at helper class below.
+								</p>
+								<h4>Helper class to conver Cursor to object.</h4>
+								<pre>public class Person {
+    private String name;
+    private int age;
+    …
+    public static Person fromCours(Coursor c) {
+      String dname = c.getString(c.getColumnIndex(“name”));
+      …
+      return new Person(dname, dage);
+    }
+}
+								</pre>
+								<p>
+									Do you like this code? Yes this is nothis special and for sure this is not racket science. I would say more, this is boilareplate! So I don't like it!
+								</p>
+								<h3>CROM</h3>
+								<p>
+									CROM is open source library. Why open source? Well, I have this comfort that more then one product can use it, more users more tests, more chance for fixes of bugs etc and this is all for free. That why :)<br />
+									Good question is what library might me created. Painful coding is a trigger (CROM had this trigger), and when you notice that you can commonize your solution.
+								</p>
+								<p>Let's assume we want to keep in DB Emploee data, so we need class for this:</p>
+								<pre>public class Employee {
+
+    @Column
+    private String name;
+
+    @Column(name="salaries")
+    private Integer salary;
+
+    public Employee() { }
+
+    public Employee(String name, Integer salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getSalary() {
+        return salary;
+    }
+}
+								</pre>
+								<p>
+									You probably noticed <code>@Column</code> annotation. CROM library will use annotated fields during conversion from Cursor.
+									Now is good time to create Crom object. But guys, good question is where create this object! If you are experienced Androdev
+									you know that we have something like Application, and this is the best place for this. Why? Because CROM has internal cache! :-)<br />
+									So it might look like this: <code>Crom crom = new Crom();</code><br />
+									And now, somewhere in your code, you have got Cursor, and conversion to our Employee object looks like this:<br /> <code>Employee employee = crom.cursorToPojo(cursor, Employee.class);</code><br />
+								</p>
+								<h3>Summary</h3>
+								<p>
+									We have talked about Android Ddatabase and how to store and obtain data in/from sqlite. We have looked at CROM libray which might help you with this kind of cases, I mean when you have to use DB.<br />
+									Stay tuned, soon article about schema, what is also interesting topic, and might be painful sometimes if you are not careful :)<br />
+									CROM code: <a href="github.com/rysiekblah/crom">github.com/rysiekblah/crom</a>
+								</p>
+							</section>
 						</div>
 					</div>
 

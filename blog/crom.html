@@ -5,20 +5,20 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
 		<div id="page-wrapper">
 
 			<header id="header">
-			  <h1><a href="index.html">SENSEIWU</a> hackers</h1>
+			  <h1><a href="../index.html">SENSEIWU</a> hackers</h1>
 			  <nav id="nav">
 			    <ul>
-			      <li><a href="index.html">Home</a></li>
-			      <li><a href="blog.html">Blog</a></li>
-			      <li><a href="team.html">Team</a></li>
-			      <li><a href="contact.html">Contact</a></li>
+			      <li><a href="../index.html">Home</a></li>
+			      <li><a href="../blog.html">Blog</a></li>
+			      <li><a href="../team.html">Team</a></li>
+			      <li><a href="../contact.html">Contact</a></li>
 			    </ul>
 			  </nav>
 			</header>
@@ -45,21 +45,46 @@
 									BTW, YATAPP is very frequent choice made by new Android devs :) <br/>
 									OK, let's take a look what Android offers in terms of Database.
 								</p>
+
 								<h4>Android DB</h4>
 								<p>
 									Android has database by default - sqlite. This is simple relation DB.
 									<blockquote>
 										SQLite is an embedded SQL database engine. Unlike most other SQL databases, SQLite does not have a separate server process. SQLite reads and writes directly to ordinary disk files. A complete SQL database with multiple tables, indices, triggers, and views, is contained in a single disk file.
 									</blockquote>
-									If you are courius about sqlite, look here: <a href="www.sqlite.org/about.html">www.sqlite.org/about.html</a>
+									If you are courius about sqlite, look here: <a href="www.sqlite.org/about.html"><strong>www.sqlite.org/about.html</strong></a>
 								</p>
-								
+
 								<h4>Access to DB on Android - 3 ways</h4>
 								<p>
 									<strong>SQLiteDatabase</strong> - Exposes methods to manage a SQLite database.<br />
 									<strong>ORMLite</strong> – very nice ORM lib works on Android, uses SQLiteDatabase<br />
 									<strong>ContentProvider</strong> – it is like adapter for SQLiteDatabase and CP can by public for many apps (on the same device:))<br />
 								</p>
+
+								<h4>SQLiteDatabase</h4>
+								<p>
+									Exposes methods to manage a SQLite database. SQLiteDatabase has methods to create, delete, execute SQL commands (CRUD), and perform other common database management tasks.<br />
+									All good so far I hope, so look at SQLiteDatabase API. For example query method:<br />
+									<pre>query(boolean distinct,
+      String table,
+      String[] columns,
+      String selection,
+      String[] selectionArgs,
+      String groupBy,
+      String having,
+      String orderBy,
+      String limit)
+									</pre>
+
+									So, API doeasn't look comfortable to use :) That's why I prefer ContentProvider.
+								</p>
+								<p>
+									There is also problem with concurrency. You have to make sure, you have only one instance it SQLiteDatabase instance.
+									To avoid concurrency problems, only one instance is recommended.
+									And, filks, as I mentioned, Coursor is like JDBC RowSet. Query methods returns Cursor – not nice format – it is like jdbc's RowSet (getInt(), getString() ...)
+								</p>
+
 								<h4>ContentProvider</h4>
 								<p>
 									Content providers are one of the primary building blocks of Android applications, providing content to applications.<br />
@@ -74,7 +99,7 @@
 									</ul>
 								</p>
 								<p>
-									Okey, great! So we have everything. But how to deal with Cursor? Ha! Wgat is a Curson?!?!?<br />
+									Okey, great! So we have everything. But how to deal with Cursor? Ha! What is a Cursor?!?!?<br />
 									If you have experience with JDBC, RowSet is equvalent for Android's Cursor.
 									Cursor is interface which provides random read-write access to the result set returned by a database query.
 									You can iterate over Cursor and take appropriate field of certain type like String, Integer etc.<br />
@@ -142,29 +167,31 @@
 						</div>
 					</div>
 
-					<footer id="footer">
-					  <ul class="icons">
-					    <li><a href="@kozlowst" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					    <!-- <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li> -->
-					    <!-- <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li> -->
-					    <li><a href="https://github.com/senseiwu" class="icon fa-github"><span class="label">Github</span></a></li>
-					    <!-- <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li> -->
-					    <!-- <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li> -->
-					  </ul>
-					  <ul class="copyright">
-					    <li>&copy; SENSEIWU hackers. All rights reserved.</li><li>Design: <a href="https://github.com/rysiekblah">Tomasz</a>, credit: <a href="http://html5up.net">HTML5 UP</a></li>
-					  </ul>
-					</footer>
+				</section>
+
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="@kozlowst" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<!-- <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li> -->
+						<!-- <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li> -->
+						<li><a href="https://github.com/senseiwu" class="icon fa-github"><span class="label">Github</span></a></li>
+						<!-- <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li> -->
+						<!-- <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li> -->
+					</ul>
+					<ul class="copyright">
+						<li>&copy; SENSEIWU hackers. All rights reserved.</li><li>Design: <a href="https://github.com/rysiekblah">Tomasz</a>, credit: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
 
 		</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrollgress.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.dropotron.min.js"></script>
+			<script src="../assets/js/jquery.scrollgress.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+			<script src="../assets/js/main.js"></script>
 	</body>
 </html>

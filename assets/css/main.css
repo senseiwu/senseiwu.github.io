@@ -2457,7 +2457,8 @@
 				}
 
 				ul.icons li .icon {
-					color: inherit;
+					/*color: inherit;*/
+					color: #212121;
 				}
 
 					ul.icons li .icon:before {
@@ -3130,7 +3131,8 @@
 /* Footer */
 
 	#footer {
-		background: #f0f0f0;
+		/*background: #f0f0f0;*/
+		background: #e1bee7;
 		padding: 4em 0 6em 0;
 		text-align: center;
 	}
@@ -3148,7 +3150,8 @@
 			}
 
 		#footer .copyright {
-			color: #999;
+			/*color: #999;*/
+			color: #727272;
 			font-size: 0.9em;
 			line-height: 1em;
 			margin: 2em 0 0 0;
